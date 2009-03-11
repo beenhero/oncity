@@ -18,12 +18,12 @@ module TabsHelper
       inner_content = capture_haml(&block)
 
       # render navs first
-      puts content_tag(:ul, @__tabs_navhtml+clear, nav_options)
+      haml_concat content_tag(:ul, @__tabs_navhtml+clear, nav_options)
       
       # render inner content
-      puts inner_content
+      haml_concat inner_content
       
-      puts content_tag(:div, "", :class => "tab-bottom")
+      haml_concat content_tag(:div, "", :class => "tab-bottom")
       
       # clear instance variable
       @__tabs_navhtml = nil
@@ -37,8 +37,8 @@ module TabsHelper
     
     # build our tab
     haml_tag :div, options.merge(:id => tab_id) do
-      puts capture_haml(&block)
-      puts content_tag(:div, "", :style => "clear: both")
+      haml_concat capture_haml(&block)
+      haml_concat content_tag(:div, "", :style => "clear: both")
     end
   end
   

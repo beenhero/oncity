@@ -94,7 +94,7 @@ module ApplicationHelper
       haml_tag :div, :class => "right-box-top #{css_class}" do
         haml_tag :div, :class => "right-box-end" do
           haml_tag :div, :class => "right-box-body" do
-            puts capture_haml(&block)
+            haml_concat capture_haml(&block)
           end
         end
       end
