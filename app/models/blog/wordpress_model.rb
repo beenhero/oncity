@@ -2,7 +2,7 @@
 
 module Blog
   class WordpressModel < ActiveRecord::Base
-    use_db :prefix => "blog_"
+    #use_db :prefix => "blog_"
     
   end
 end
