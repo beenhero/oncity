@@ -1,6 +1,5 @@
 #footer
   .links
-    %strong LINKS:
     = link_to "Gallery", root_url
     |
     = link_to "My Profile", user_url(current_or_anon_user)
@@ -20,10 +19,7 @@
     .credits
       == &copy; #{AppConfig.site_name}
       by
-      = link_to("RailsJedi", "http://www.railsjedi.com")+","
-      = br
-      Logo by
-      = link_to("VivaLogo", "http://www.vivalogo.com/")
+      = link_to("ROROL", "http://www.rorol.com")+","
       
   .about
     = partial("layouts/social_media") if AppConfig.show_social_media

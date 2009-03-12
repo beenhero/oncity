@@ -9,3 +9,5 @@
       = link_to "Read More...", about_url, :class => "readmore"
       |
       = link_to "Hide", "#", :class => "toggle", :rel => "#about_us"
+    书签：
+    %a{:onclick => "return clicked(event)", :href => "javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('src','#{AppConfig.site_url}/javascripts/bookmarklet.js');document.body.appendChild(e)})())"} 发布至城市间
