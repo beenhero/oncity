@@ -58,6 +58,8 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   
+  config.i18n.default_locale = "zh-CN"
+  
   config.gem "haml", :version => ">= 2.0.0"
   config.gem "mime-types", :lib => "mime/types", :version => ">= 1.15"
   config.gem "ruby-openid", :lib => "openid"
