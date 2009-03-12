@@ -60,7 +60,7 @@ module PluginAWeek #:nodoc:
       configuration = attr_names.last.is_a?(Hash) ? attr_names.pop : {}
       configuration.assert_valid_keys(EMAIL_FORMAT_OPTIONS | EMAIL_LENGTH_OPTIONS)
       configuration.reverse_merge!(
-        :wrong_format => ActiveRecord::Errors.default_error_messages[:invalid_email]
+        :wrong_format => I18n.translate('activerecord.errors.messages.invalid_email', :default => 'is an invalid email address')
       )
       
       # Add format validation
@@ -80,7 +80,3 @@ end
 ActiveRecord::Base.class_eval do
   extend PluginAWeek::ValidatesAsEmailAddress
 end
-
-ActiveRecord::Errors.default_error_messages.update(
-  :invalid_email => 'is an invalid email address'
-)
