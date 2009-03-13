@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/zikii/!svn/ver/217/trunk/vendor/plugins/action_mailer_tls
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/zikii/!svn/ver/217/trunk/vendor/plugins/action_mailer_tls/init.rb
+END
+smtp_tls.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/zikii/!svn/ver/215/trunk/vendor/plugins/action_mailer_tls/smtp_tls.rb
+END

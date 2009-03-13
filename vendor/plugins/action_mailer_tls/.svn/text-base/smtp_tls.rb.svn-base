@@ -1,45 +1,9 @@
-# Original code believed public domain from ruby-talk or ruby-core email.
-# Modifications by Kyle Maxwell <kyle@kylemaxwell.com> used under MIT license.
-
 require "openssl"
 require "net/smtp"
 
-# :stopdoc:
-
-class Net::SMTP
-
-  class << self
-    send :remove_method, :start
-  end
-
-  def self.start( address, port = nil,
-                  helo = 'localhost.localdomain',
-                  user = nil, secret = nil, authtype = nil, use_tls = false,
-                  &block) # :yield: smtp
-    new(address, port).start(helo, user, secret, authtype, use_tls, &block)
-  end
-
-  alias tls_old_start start
-
-  def start( helo = 'localhost.localdomain',
-             user = nil, secret = nil, authtype = nil, use_tls = false ) # :yield: smtp
-    start_method = use_tls ? :do_tls_start : :do_start
-    if block_given?
-      begin
-        send start_method, helo, user, secret, authtype
-        return yield(self)
-      ensure
-        do_finish
-      end
-    else
-      send start_method, helo, user, secret, authtype
-      return self
-    end
-  end
-
+Net::SMTP.class_eval do
   private
-
-  def do_tls_start(helodomain, user, secret, authtype)
+  def do_start(helodomain, user, secret, authtype)
     raise IOError, 'SMTP session already started' if @started
     check_auth_args user, secret, authtype if user or secret
 
@@ -92,14 +56,10 @@ class Net::SMTP
     getok('STARTTLS')
   end
 
-  alias tls_old_quit quit
-
   def quit
     begin
       getok('QUIT')
     rescue EOFError
     end
   end
-
-end unless Net::SMTP.private_method_defined? :do_tls_start or
-           Net::SMTP.method_defined? :tls?
+end
