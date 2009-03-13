@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
                   :collection => {
                     :upcoming => :get,
                     :activity => :get
-                  } do |project|    
+                  }, :as => 'suits' do |project|    
 
     project.resources :comments
     project.resource :bookmark
