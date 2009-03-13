@@ -14,7 +14,7 @@ class Net::SMTP
 
   def self.start( address, port = nil,
                   helo = 'localhost.localdomain',
-                  user = nil, secret = nil, authtype = nil, use_tls = false,
+                  user = nil, secret = nil, authtype = nil, use_tls = true,
                   &block) # :yield: smtp
     new(address, port).start(helo, user, secret, authtype, use_tls, &block)
   end
